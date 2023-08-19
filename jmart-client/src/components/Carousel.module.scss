@@ -1,0 +1,46 @@
+// Carousel.module.scss
+
+.carouselContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
+  flex-shrink: 0;
+  width: 100%;
+  transition: transform 0.7s ease-in-out;
+}
+
+.dotsContainer {
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.activeDot {
+  background-color: #333;
+}

@@ -1,0 +1,44 @@
+.nav {
+  font-family: "BMHANNAPro", sans-serif;
+  font-size: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 56px;
+  background-color: white;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.4);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    fill: rgb(93, 93, 93);
+    cursor: pointer;
+  }
+}
+
+.backIcon {
+  position: absolute;
+  left: 12px;
+}
+
+$width: 100px;
+.logoContainer {
+  cursor: pointer;
+  position: absolute;
+  width: $width;
+  left: calc(50% - $width/2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
