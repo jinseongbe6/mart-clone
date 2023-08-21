@@ -1,3 +1,11 @@
+"use client";
+
+import { BasketContents } from "./basketContents";
+
 export default function Basket() {
-  return <div>asdfaksjdfhkajshdfjkasdf</div>;
+  return (
+    <div>
+      <BasketContents />
+    </div>
+  );
 }

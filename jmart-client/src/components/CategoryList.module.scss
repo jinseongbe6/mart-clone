@@ -1,0 +1,41 @@
+.mainContainer {
+  background-color: white;
+  padding: 10px 12px;
+}
+
+.info {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.categoryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+
+  .item {
+    flex: 1 0 18%; // 아이템이 컨테이너 너비의 20%를 차지하도록 설정
+    width: 20px;
+    box-sizing: border-box;
+    margin: 2px;
+    text-align: center;
+    border-radius: 40%;
+    padding: 2px;
+  }
+}
+
+.img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.itemName {
+  font-family: "BMHANNAPro", sans-serif;
+  font-size: 12px;
+  padding-bottom: -2px;
+  word-break: keep-all;
+}

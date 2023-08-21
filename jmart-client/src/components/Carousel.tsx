@@ -13,23 +13,43 @@ export type CarouselData = {
 export type CarouselProps = {
   data: CarouselData[];
   height?: number;
+  displayDot?: boolean;
 };
 
-const Carousel = ({ data, height = 170 }: CarouselProps) => {
+const Carousel = ({ data, height = 170, displayDot = true }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isResetting, setIsResetting] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === data.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 2000);
+      if (currentIndex === data.length) {
+        setIsTransitioning(false);
+        setCurrentIndex(0);
+        setIsResetting(true);
+
+        setTimeout(() => {
+          setIsResetting(false);
+          setIsTransitioning(true);
+          setCurrentIndex(1);
+        }, 50);
+      } else if (!isResetting) {
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+      }
+    }, 1500);
 
     return () => clearInterval(interval);
-  }, [data.length]);
+  }, [data.length, currentIndex, isResetting]);
 
   const handleDotClick = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  const isActiveDot = (index: number) => {
+    if (currentIndex === data.length && index === 0) return true;
+    if (index !== data.length) {
+      return index === currentIndex;
+    }
   };
 
   if (data?.length === 0) {
@@ -42,26 +62,39 @@ const Carousel = ({ data, height = 170 }: CarouselProps) => {
         {data.map((item, index) => (
           <div
             key={item.id}
-            className={`${styles.container}`}
+            className={`${styles.container} ${
+              !isTransitioning ? styles.noTransition : ""
+            }`}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             <img width="100%" src={item.imageUrl} alt={item.title} />
           </div>
         ))}
-      </div>
-      <div className={styles.dotsContainer}>
-        <div className={styles.dots}>
-          {data.map((_, index) => (
-            <span
-              key={index}
-              className={`${styles.dot} ${
-                index === currentIndex ? styles.activeDot : ""
-              }`}
-              onClick={() => handleDotClick(index)}
-            />
-          ))}
+        <div
+          key={0}
+          className={`${styles.container} ${
+            !isTransitioning ? styles.noTransition : ""
+          }`}
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          <img width="100%" src={data[0].imageUrl} alt={data[0].title} />
         </div>
       </div>
+      {displayDot && (
+        <div className={styles.dotsContainer}>
+          <div className={styles.dots}>
+            {data.map((_, index) => (
+              <span
+                key={index}
+                className={`${styles.dot} ${
+                  isActiveDot(index) ? styles.activeDot : ""
+                }`}
+                onClick={() => handleDotClick(index)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 .nav {
+  z-index: 10;
   font-family: "BMHANNAPro", sans-serif;
   font-size: 20px;
   position: fixed;
@@ -41,4 +42,20 @@ $width: 100px;
   flex-direction: row;
   align-items: center;
   gap: 10px;
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  position: absolute;
+  font-size: 18px;
+  left: 50px;
+  width: calc(100% - 100px);
+  &::placeholder {
+    color: lightgray;
+  }
 }
