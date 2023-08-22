@@ -51,7 +51,7 @@ export default function Home() {
       <GoodsList
         title="지금 필요한 생필품"
         listDirection="column-3"
-        displayGoodsCount={6}
+        displayGoodsCount={24}
         displayLike
         moreLink="/"
         data={data?.goods}
