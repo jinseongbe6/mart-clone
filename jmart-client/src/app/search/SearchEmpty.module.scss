@@ -1,0 +1,22 @@
+.emptyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 56px);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyImg {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.emptyText {
+  font-size: 20px;
+}

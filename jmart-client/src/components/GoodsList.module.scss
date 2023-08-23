@@ -1,0 +1,88 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  padding: 10px 12px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  .title {
+    font-family: "BMHANNAPro", sans-serif;
+    font-size: 20px;
+  }
+
+  .moreLink {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 185, 179);
+  }
+}
+
+@mixin default {
+  display: flex;
+  background-color: white;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.goodsContainerRow {
+  @include default;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  .goodsItem {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    width: 150px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.goodsContainerColumn2 {
+  @include default;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+
+  .goodsItem {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+    padding: 10px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.goodsContainerColumn3 {
+  @include default;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+
+  .goodsItem {
+    flex: 1 0 33.3%;
+    box-sizing: border-box;
+    padding: 10px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
